@@ -1,0 +1,39 @@
+Create database market_sales;
+use market_sales;
+select * from market_data;
+-- Show for gender female and customer type 
+select gender,customer_type
+from market_data
+where gender= "female";
+
+-- Show the product line and total unit price 
+select product_line,round(sum(Unit_price)) as total_price
+from market_data
+group by product_line;
+
+-- Show the city and total quantity
+select city,round(sum(Quantity))
+from market_data
+group by city;
+
+-- Show the product line and total tax
+select product_line,round(sum(Tax)) as total_tax
+from market_data
+group by product_line; 
+
+-- Show the branch for A and their total unit price 
+select Branch,round(sum(unit_price)) as total_price
+from market_data
+group by Branch;
+-- For male show the unit price more than 70 and tax less than 20 
+select Gender,Unit_price,tax
+from market_data
+where Unit_price > 70 and Tax < 20 and Gender= "Male";
+
+-- For product line fashion accesories show the average of  unit price 
+Select product_line,round(avg(unit_price)) as avg_unit_price
+from market_data
+where product_line= "Fashion Accessories";
+
+
+
